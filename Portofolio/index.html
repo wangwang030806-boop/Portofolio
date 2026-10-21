@@ -1,0 +1,1148 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Portofolio - Keagan Osworth Chandra</title>
+  <style>
+    /* Reset & Variabel Warna Modern */
+    :root {
+      --primary: #0066cc;
+      --primary-hover: #004b99;
+      --primary-light: #e6f0fa;
+      --bg-color: #f8fafc;
+      --card-bg: #ffffff;
+      --text-main: #1e293b;
+      --text-muted: #64748b;
+      --border-color: #e2e8f0;
+      --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.05);
+      --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.07), 0 2px 4px -1px rgba(0, 0, 0, 0.04);
+      --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+      --radius-sm: 8px;
+      --radius-md: 12px;
+      --radius-lg: 16px;
+      --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: 'Inter', 'Segoe UI', system-ui, -apple-system, sans-serif;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      background-color: var(--bg-color);
+      color: var(--text-main);
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    a {
+      text-decoration: none;
+      color: var(--primary);
+      transition: var(--transition);
+    }
+
+    /* Navbar Modern */
+    header {
+      background: rgba(255, 255, 255, 0.85);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--border-color);
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      transition: var(--transition);
+    }
+
+    nav {
+      max-width: 1100px;
+      margin: auto;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1.2rem 2rem;
+    }
+
+    .logo {
+      font-weight: 700;
+      font-size: 1.25rem;
+      color: var(--text-main);
+      letter-spacing: -0.02em;
+      background: linear-gradient(135deg, var(--text-main), var(--primary));
+      -webkit-background-clip: text;
+      background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+    .nav-links {
+      list-style: none;
+      display: flex;
+      gap: 2rem;
+    }
+
+    .nav-links a {
+      color: var(--text-muted);
+      font-weight: 500;
+      font-size: 0.95rem;
+      position: relative;
+      padding: 0.25rem 0;
+    }
+
+    .nav-links a:hover {
+      color: var(--primary);
+    }
+
+    .nav-links a::after {
+      content: '';
+      position: absolute;
+      width: 0;
+      height: 2px;
+      bottom: 0;
+      left: 0;
+      background-color: var(--primary);
+      transition: var(--transition);
+      border-radius: 2px;
+    }
+
+    .nav-links a:hover::after {
+      width: 100%;
+    }
+
+    /* Hero Section */
+    .hero {
+      max-width: 1100px;
+      margin: auto;
+      padding: 5rem 2rem 3rem;
+      text-align: center;
+    }
+
+    .hero h1 {
+      font-size: clamp(2rem, 5vw, 3.25rem);
+      font-weight: 800;
+      margin-bottom: 1rem;
+      color: var(--text-main);
+      line-height: 1.2;
+      letter-spacing: -0.03em;
+    }
+
+    .hero p {
+      font-size: clamp(1rem, 2.5vw, 1.25rem);
+      color: var(--text-muted);
+      margin-bottom: 2rem;
+      max-width: 700px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      background: linear-gradient(135deg, var(--primary), var(--primary-hover));
+      color: #ffffff;
+      padding: 0.85rem 1.8rem;
+      border-radius: var(--radius-md);
+      font-weight: 600;
+      box-shadow: 0 4px 12px rgba(0, 102, 204, 0.25);
+      transition: var(--transition);
+    }
+
+    .btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 6px 20px rgba(0, 102, 204, 0.35);
+      text-decoration: none;
+      color: #ffffff;
+    }
+
+    /* Sections Layout */
+    section {
+      max-width: 1100px;
+      margin: auto;
+      padding: 3.5rem 2rem;
+    }
+
+    section h2 {
+      font-size: 1.75rem;
+      font-weight: 700;
+      margin-bottom: 2rem;
+      color: var(--text-main);
+      position: relative;
+      display: inline-block;
+      letter-spacing: -0.02em;
+    }
+
+    section h2::after {
+      content: '';
+      position: absolute;
+      left: 0;
+      bottom: -6px;
+      width: 100%;
+      height: 4px;
+      background: linear-gradient(90deg, var(--primary), transparent);
+      border-radius: 2px;
+    }
+
+    section > p {
+      color: var(--text-muted);
+      font-size: 1.05rem;
+      max-width: 800px;
+    }
+
+    /* Info Cards (GPA & Pengalaman) */
+    .info-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 1.5rem;
+      margin-top: 2rem;
+    }
+
+    .info-card {
+      background: var(--card-bg);
+      border: 1px solid var(--border-color);
+      border-left: 5px solid var(--primary);
+      border-radius: var(--radius-md);
+      padding: 1.75rem;
+      box-shadow: var(--shadow-sm);
+      transition: var(--transition);
+    }
+
+    .info-card:hover {
+      transform: translateY(-4px);
+      box-shadow: var(--shadow-lg);
+    }
+
+    .info-card h3 {
+      font-size: 1.15rem;
+      color: var(--text-main);
+      margin-bottom: 0.75rem;
+      font-weight: 600;
+    }
+
+    .info-card .highlight {
+      font-size: 2.5rem;
+      font-weight: 800;
+      color: var(--primary);
+      margin-bottom: 0.5rem;
+      letter-spacing: -0.03em;
+    }
+
+    .info-card ul {
+      margin-left: 1.25rem;
+      font-size: 0.95rem;
+      color: var(--text-muted);
+    }
+
+    .info-card li {
+      margin-bottom: 0.5rem;
+    }
+
+    .info-card li strong {
+      color: var(--text-main);
+    }
+
+    /* Skills Grid (8 Cards) */
+    .skills-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(110px, 1fr));
+      gap: 1.25rem;
+    }
+
+    .skill-card {
+      background: var(--card-bg);
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius-md);
+      padding: 1.25rem 0.75rem;
+      box-shadow: var(--shadow-sm);
+      transition: var(--transition);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .skill-card:hover {
+      transform: translateY(-5px);
+      box-shadow: var(--shadow-md);
+      border-color: var(--primary);
+    }
+
+    .skill-icon-container {
+      width: 52px;
+      height: 52px;
+      margin-bottom: 0.75rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .skill-icon-container img {
+      max-width: 100%;
+      max-height: 100%;
+      object-fit: contain;
+      cursor: pointer;
+    }
+
+    .skill-title {
+      font-weight: 600;
+      font-size: 0.88rem;
+      color: var(--text-main);
+    }
+
+    /* Split Project Card + Slider Layout */
+    .project-split-card {
+      background: #ffffff;
+      border: 1px solid var(--border-color);
+      border-radius: 20px;
+      padding: 2.5rem;
+      margin-bottom: 2.5rem;
+      box-shadow: var(--shadow-sm);
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 2.5rem;
+      align-items: center;
+      transition: var(--transition);
+    }
+
+    .project-split-card:hover {
+      box-shadow: var(--shadow-lg);
+      border-color: #cbd5e1;
+    }
+
+    .project-info {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+
+    .project-badge {
+      display: inline-block;
+      background: var(--primary-light);
+      color: var(--primary);
+      padding: 0.3rem 0.8rem;
+      border-radius: 20px;
+      font-size: 0.85rem;
+      font-weight: 600;
+      margin-bottom: 1rem;
+      width: fit-content;
+    }
+
+    .project-info h3 {
+      font-size: 1.8rem;
+      font-weight: 700;
+      color: var(--text-main);
+      margin-bottom: 0.8rem;
+    }
+
+    .project-info p.description {
+      color: var(--text-muted);
+      font-size: 1rem;
+      line-height: 1.6;
+      margin-bottom: 1.5rem;
+    }
+
+    .tag-container {
+      margin-bottom: 1rem;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.4rem;
+    }
+
+    .tag {
+      background: var(--primary-light);
+      color: var(--primary);
+      padding: 0.25rem 0.75rem;
+      border-radius: 20px;
+      font-size: 0.78rem;
+      font-weight: 600;
+    }
+
+    .project-gallery-container {
+      width: 100%;
+      position: relative;
+    }
+
+    .gallery-slider {
+      display: flex;
+      gap: 1rem;
+      overflow-x: auto;
+      scroll-snap-type: x mandatory;
+      scroll-behavior: smooth;
+      padding-bottom: 0.8rem;
+      -webkit-overflow-scrolling: touch;
+    }
+
+    .gallery-slider::-webkit-scrollbar {
+      height: 6px;
+    }
+
+    .gallery-slider::-webkit-scrollbar-track {
+      background: #f1f5f9;
+      border-radius: 10px;
+    }
+
+    .gallery-slider::-webkit-scrollbar-thumb {
+      background: #cbd5e1;
+      border-radius: 10px;
+    }
+
+    .gallery-item {
+      flex: 0 0 100%;
+      scroll-snap-align: start;
+      border-radius: 14px;
+      overflow: hidden;
+      background-color: #f1f5f9;
+      height: 280px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border: 1px solid var(--border-color);
+    }
+
+    .gallery-item img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      cursor: pointer;
+      transition: transform 0.2s ease;
+    }
+
+    .gallery-item img:hover {
+      transform: scale(1.02);
+    }
+
+    .gallery-item img.portrait-img {
+      object-fit: contain;
+      padding: 10px;
+    }
+
+    .slider-hint {
+      text-align: center;
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      margin-top: 0.5rem;
+      font-weight: 500;
+    }
+
+    /* Grid Layout untuk Sertifikat */
+    .card-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 1.75rem;
+    }
+
+    .card {
+      background: var(--card-bg);
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius-lg);
+      overflow: hidden;
+      box-shadow: var(--shadow-sm);
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      transition: var(--transition);
+    }
+
+    .card:hover {
+      transform: translateY(-6px);
+      box-shadow: var(--shadow-lg);
+    }
+
+    .card-img-container {
+      width: 100%;
+      height: 200px;
+      background-color: var(--primary-light);
+      overflow: hidden;
+    }
+
+    .card-img-container img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      cursor: pointer;
+      transition: transform 0.5s ease;
+    }
+
+    .card:hover .card-img-container img {
+      transform: scale(1.05);
+    }
+
+    .card-body {
+      padding: 1.75rem;
+      display: flex;
+      flex-direction: column;
+      flex-grow: 1;
+      justify-content: space-between;
+    }
+
+    .card-title {
+      font-size: 1.2rem;
+      font-weight: 700;
+      margin-bottom: 0.5rem;
+      color: var(--text-main);
+    }
+
+    .card-text {
+      font-size: 0.95rem;
+      color: var(--text-muted);
+      margin-bottom: 1rem;
+    }
+
+    /* Modal / Popup Detail Gambar */
+    .image-modal {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(15, 23, 42, 0.88);
+      backdrop-filter: blur(8px);
+      -webkit-backdrop-filter: blur(8px);
+      z-index: 1000;
+      justify-content: center;
+      align-items: center;
+      padding: 1.5rem;
+      opacity: 0;
+      transition: opacity 0.3s ease;
+    }
+
+    .image-modal.active {
+      display: flex;
+      opacity: 1;
+    }
+
+    .image-modal-content {
+      max-width: 90vw;
+      max-height: 88vh;
+      object-fit: contain;
+      border-radius: var(--radius-md);
+      box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.5);
+      transform: scale(0.9);
+      transition: transform 0.3s ease;
+    }
+
+    .image-modal.active .image-modal-content {
+      transform: scale(1);
+    }
+
+    .image-modal-close {
+      position: absolute;
+      top: 1.5rem;
+      right: 2rem;
+      color: #ffffff;
+      font-size: 2.5rem;
+      font-weight: 300;
+      cursor: pointer;
+      line-height: 1;
+      transition: var(--transition);
+      user-select: none;
+    }
+
+    .image-modal-close:hover {
+      color: #38bdf8;
+      transform: scale(1.1);
+    }
+
+    /* Footer */
+    footer {
+      background: var(--text-main);
+      color: #94a3b8;
+      text-align: center;
+      padding: 3.5rem 1rem 2rem;
+      margin-top: 5rem;
+      border-top: 1px solid var(--border-color);
+    }
+
+    footer h2 {
+      color: #ffffff;
+      font-size: 1.5rem;
+      margin-bottom: 1rem;
+    }
+
+    footer h2::after {
+      display: none;
+    }
+
+    footer p {
+      margin-bottom: 0.75rem;
+      font-size: 0.95rem;
+    }
+
+    footer a {
+      color: #38bdf8;
+    }
+
+    footer a:hover {
+      color: #7dd3fc;
+    }
+
+    /* Media Queries Responsif */
+    @media (max-width: 900px) {
+      .project-split-card {
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+        padding: 1.5rem;
+      }
+      .gallery-item {
+        height: 220px;
+      }
+    }
+
+    @media (max-width: 768px) {
+      nav {
+        flex-direction: column;
+        gap: 1rem;
+        padding: 1rem;
+      }
+
+      .nav-links {
+        gap: 1rem;
+        flex-wrap: wrap;
+        justify-content: center;
+      }
+
+      .hero {
+        padding: 3rem 1rem 2rem;
+      }
+
+      section {
+        padding: 2.5rem 1.25rem;
+      }
+
+      .skills-grid {
+        grid-template-columns: repeat(auto-fill, minmax(90px, 1fr));
+        gap: 0.75rem;
+      }
+
+      .skill-card {
+        padding: 1rem 0.5rem;
+      }
+
+      .skill-icon-container {
+        width: 40px;
+        height: 40px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Navbar -->
+  <header>
+    <nav>
+      <div class="logo">Keagan Osworth Chandra</div>
+      <ul class="nav-links">
+        <li><a href="#about">Tentang</a></li>
+        <li><a href="#skills">Aplikasi</a></li>
+        <li><a href="#projects">Proyek</a></li>
+        <li><a href="#certificates">Sertifikat</a></li>
+        <li><a href="#contact">Kontak</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <!-- Hero Section -->
+  <div class="hero">
+    <h1>Halo, Saya Keagan Osworth Chandra</h1>
+    <p>Mahasiswa Information Systems | Frontend Developer & Business Analyst</p>
+    <a href="#projects" class="btn">Lihat Proyek Saya</a>
+  </div>
+
+  <!-- About Section -->
+  <section id="about">
+    <h2>Tentang Saya</h2>
+    <p>Saya adalah mahasiswa jurusan Information Systems di BINUS University Alam Sutera. Saya berfokus pada pengembangan antarmuka web, perancangan pengalaman pengguna (UI/UX), serta analisis proses bisnis digital.</p>
+
+    <div class="info-grid">
+      <!-- Card 1: GPA / Prestasi Akademik -->
+      <div class="info-card">
+        <h3>Indeks Prestasi Kumulatif (GPA)</h3>
+        <div class="highlight">3.81 / 4.00</div>
+        <p><strong>BINUS University Alam Sutera</strong></p>
+        <p style="font-size: 0.9rem; color: #666;">Jurusan Information Systems (Undergraduate Program)</p>
+      </div>
+
+      <!-- Card 2: Pengalaman & Keorganisasian -->
+      <div class="info-card">
+        <h3>Pengalaman & Organisasi</h3>
+        <ul>
+          <li><strong>SMA Permai 2022-2023:</strong> Anggota Osis SMA Permai & Mentor dalam Kegiatan MPLS</li>
+          <li><strong>UKM KMBD & Badminton BINUS:</strong> Aktivis dan Koordinator Lapangan dalam Pelatihan Kepemimpinan Mahasiswa (LDK Aktivis)</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- Aplikasi / Skills Section (8 Items) -->
+  <section id="skills">
+    <h2>Aplikasi & Teknologi yang pernah dipakai</h2>
+    <div class="skills-grid">
+
+      <!-- 1. Figma -->
+      <div class="skill-card">
+        <div class="skill-icon-container">
+          <img src="asset/Figma.jpeg" alt="Figma">
+        </div>
+        <div class="skill-title">Figma</div>
+      </div>
+
+      <!-- 2. VS Code -->
+      <div class="skill-card">
+        <div class="skill-icon-container">
+          <img src="asset/vscode.jpeg" alt="VsCode">
+        </div>
+        <div class="skill-title">VsCode</div>
+      </div>
+
+      <!-- 3. DrawIO -->
+      <div class="skill-card">
+        <div class="skill-icon-container">
+          <img src="asset/DrawIO.jpeg" alt="DrawIO">
+        </div>
+        <div class="skill-title">DrawIO</div>
+      </div>
+
+      <!-- 4. Canva -->
+      <div class="skill-card">
+        <div class="skill-icon-container">
+          <img src="asset/Canva.jpeg" alt="Canva">
+        </div>
+        <div class="skill-title">Canva</div>
+      </div>
+
+      <!-- 5. Mendix -->
+      <div class="skill-card">
+        <div class="skill-icon-container">
+          <img src="asset/Mendixx.jpeg" alt="Mendix">
+        </div>
+        <div class="skill-title">Mendix</div>
+      </div>
+
+      <!-- 6. Oracle Apex -->
+      <div class="skill-card">
+        <div class="skill-icon-container">
+          <img src="asset/OracleApex.jpeg" alt="Oracle Apex">
+        </div>
+        <div class="skill-title">Oracle Apex</div>
+      </div>
+
+      <!-- 7. XAMPP -->
+      <div class="skill-card">
+        <div class="skill-icon-container">
+          <img src="asset/xampp.jpeg" alt="XAMPP">
+        </div>
+        <div class="skill-title">Xampp</div>
+      </div>
+
+      <!-- 8. Excel -->
+      <div class="skill-card">
+        <div class="skill-icon-container">
+          <img src="asset/Excel.jpeg" alt="Excel">
+        </div>
+        <div class="skill-title">Excel</div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- Projects Section dengan Kartu Split & Photo Carousel -->
+  <section id="projects">
+    <h2>Proyek Utama</h2>
+
+    <!-- PROYEK 1: GUDEG NDESO -->
+    <div class="project-split-card">
+      <div class="project-info">
+        <div>
+          <span class="project-badge">UI/UX Design & E-Commerce</span>
+          <h3>Gudeg Ndeso</h3>
+          <p class="description">Proyek perencanaan bisnis dan pengembangan produk komprehensif untuk memodernisasi kuliner tradisional 
+            "Gudeg Ndeso". Proyek ini memetakan peluang pasar melalui riset pengguna, analisis celah pasar (gaps in market), dan strategi 
+            diferensiasi, yang dirumuskan ke dalam Business Model Canvas (BMC) serta rancangan prototipe antarmuka aplikasi digital.</p>
+          <div class="tag-container">
+            <span class="tag">UI/UX Design</span>
+            <span class="tag">E-Commerce</span>
+            <span class="tag">Figma</span>
+            <span class="tag">Business Model Canvas</span>
+          </div>
+        </div>
+
+        <a href="https://www.figma.com/design/9EkRAPki2pXIdKvRUy1Afi/Creativity?node-id=0-1&t=dLrLrHnxtkWYUgUF-0" target="_blank" class="btn">Lihat di Figma &rarr;</a>
+      </div>
+
+      <div class="project-gallery-container">
+        <div class="gallery-slider">
+          <div class="gallery-item">
+            <img src="asset/GudegNdeso.jpg" alt="Gudeg Ndeso Preview 1">
+          </div>
+          <div class="gallery-item">
+            <img src="asset/GudegNdeso.jpeg" alt="Gudeg Ndeso Preview 1">
+          </div>
+          <div class="gallery-item">
+            <img src="asset/GudegNdeso (2).png" alt="Gudeg Ndeso Preview 2">
+          </div>
+          <div class="gallery-item">
+            <img src="asset/GudegNdeso (3).png" alt="Gudeg Ndeso Preview 3">
+          </div>
+          <div class="gallery-item">
+            <img src="asset/GudegNdeso (4).png" alt="Gudeg Ndeso Preview 4">
+          </div>
+          <div class="gallery-item">
+            <img src="asset/GudegNdeso (5).png" alt="Gudeg Ndeso Preview 5">
+          </div>
+        </div>
+        <p class="slider-hint">&#x2194; Geser horizontal dan tekan untuk melihat detail dokumentasi foto</p>
+      </div>
+    </div>
+
+    <!-- PROYEK 2: KENANGIN KOPI -->
+    <div class="project-split-card">
+      <div class="project-info">
+        <div>
+          <span class="project-badge">Frontend Web Development</span>
+          <h3>Kenangin Kopi</h3>
+          <p class="description">KenanginKopi adalah aplikasi pemesanan dan manajemen kedai kopi berbasis web. Aplikasi ini dikembangkan 
+            menggunakan PHP murni (native) dengan database MySQL. Sistem dirancang untuk mendukung operasional bisnis kedai kopi, mulai 
+            dari navigasi menu, 
+            manajemen keranjang belanja, proses pemesanan, hingga administrasi produk dan cabang toko.</p>
+          <div class="tag-container">
+            <span class="tag">Frontend Dev</span>
+            <span class="tag">PHP</span>
+            <span class="tag">JavaScript</span>
+            <span class="tag">CSS</span>
+            <span class="tag">XAMPP</span>
+          </div>
+        </div>
+
+        <a href="https://drive.google.com/drive/folders/1EoK-AnCY5hUxiPhmB_R7R89hlgAHlNhi?usp=sharing" target="_blank" class="btn">Lihat Berkas Proyek &rarr;</a>
+      </div>
+
+      <div class="project-gallery-container">
+        <div class="gallery-slider">
+          <div class="gallery-item">
+            <img src="asset/Kenangin.jpg" alt="Kenangin Kopi Preview 1">
+          </div>
+          <div class="gallery-item">
+            <img src="asset/Kenangin.jpeg" alt="Kenangin Kopi Preview 1">
+          </div>
+          <div class="gallery-item">
+            <img src="asset/Kenangin (2).jpeg" alt="Kenangin Kopi Preview 2">
+          </div>
+          <div class="gallery-item">
+            <img src="asset/Kenangin (3).jpeg" alt="Kenangin Kopi Preview 3">
+          </div>
+          <div class="gallery-item">
+            <img src="asset/Kenangin (4).jpeg" alt="Kenangin Kopi Preview 4">
+          </div>
+          <div class="gallery-item">
+            <img src="asset/Kenangin (5).jpeg" alt="Kenangin Kopi Preview 5">
+          </div>
+          <div class="gallery-item">
+            <img src="asset/Kenangin (6).jpeg" alt="Kenangin Kopi Preview 6">
+          </div>
+          <div class="gallery-item">
+            <img src="asset/Kenangin (7).jpeg" alt="Kenangin Kopi Preview 7">
+          </div>
+          <div class="gallery-item">
+            <img src="asset/Kenangin (8).jpeg" alt="Kenangin Kopi Preview 8">
+          </div>
+          <div class="gallery-item">
+            <img src="asset/Kenangin (9).jpeg" alt="Kenangin Kopi Preview 9">
+          </div>
+          <div class="gallery-item">
+            <img src="asset/Kenangin (10).jpeg" alt="Kenangin Kopi Preview 10">
+          </div>
+        </div>
+        <p class="slider-hint">&#x2194; Geser horizontal dan tekan untuk melihat detail dokumentasi foto</p>
+      </div>
+    </div>
+
+    <!-- PROYEK 3: RISET DAYA SAING UMKM -->
+    <div class="project-split-card">
+      <div class="project-info">
+        <div>
+          <span class="project-badge">Academic Research Paper</span>
+          <h3>Riset Daya Saing UMKM</h3>
+          <p class="description">Penelitian kuantitatif ini menganalisis pengaruh literasi teknologi digital, keterampilan 
+            digital (digital skills), dan data-driven digital marketing terhadap daya saing UMKM di Tangerang. Menggunakan metode 
+            Structural Equation Modeling (SEM) berbasis PLS pada 201 responden UMKM, riset ini menemukan bahwa keterampilan digital 
+            teknis dan kapabilitas inovasi merupakan faktor paling signifikan dalam mendorong adopsi teknologi serta meningkatkan 
+            daya saing bisnis.</p>
+          <div class="tag-container">
+            <span class="tag">Research</span>
+            <span class="tag">Quantitative / SEM</span>
+            <span class="tag">Data Marketing</span>
+          </div>
+        </div>
+
+        <a href="https://docs.google.com/document/d/1-HFSs2pOQTAjgXXm6-Rjz-o3zkSEpEAHpfySGOlUFDg/edit?usp=sharing" target="_blank" class="btn">Baca Paper &rarr;</a>
+      </div>
+
+      <div class="project-gallery-container">
+        <div class="gallery-slider">
+          <div class="gallery-item">
+            <img src="asset/Paper.jpg" class="portrait-img" alt="Paper Research Preview">
+          </div>
+        </div>
+        <p class="slider-hint">&#x2194; Geser horizontal dan tekan untuk melihat detail dokumentasi foto</p>
+      </div>
+    </div>
+
+    <!-- PROYEK 4: Birthday Invitation -->
+    <div class="project-split-card">
+      <div class="project-info">
+        <div>
+          <span class="project-badge">Frontend Web Development</span>
+          <h3>Birthday Invitation</h3>
+          <p class="description">Merancang dan membangun website undangan digital ulang tahun ke-50 yang 
+            responsif dan elegan dengan tema Luxury Gold & Glassmorphism. Dilengkapi fitur interaktif seperti pemutar musik latar, 
+            countdown timer, integrasi lokasi Google Maps, galeri foto dengan lightbox, modal angpau digital, serta sistem RSVP & 
+            papan ucapan real-time yang terhubung ke Google Sheets.</p>
+          <div class="tag-container">
+            <span class="tag">Frontend Dev</span>
+            <span class="tag">HTML</span>
+            <span class="tag">CSS</span>
+            <span class="tag">JavaScript</span>
+            <span class="tag">Google Apps Script</span>
+          </div>
+        </div>
+
+        <a href="https://drive.google.com/drive/folders/1RcVqID2LcC_MDkK6GMZLpQffxZFxw_W2?usp=sharing" target="_blank" class="btn">Lihat Berkas Proyek &rarr;</a>
+      </div>
+
+      <div class="project-gallery-container">
+        <div class="gallery-slider">
+          <div class="gallery-item">
+            <img src="asset/Birthday.jpg" alt="Birthday Invitation Preview 1">
+          </div>
+          <div class="gallery-item">
+            <img src="asset/Birthday (1).png" alt="Birthday Invitation Preview 2">
+          </div>
+          <div class="gallery-item">
+            <img src="asset/Birthday (2).png" alt="Birthday Invitation Preview 2">
+          </div>
+          <div class="gallery-item">
+            <img src="asset/Birthday (3).png" alt="Birthday Invitation Preview 3">
+          </div>
+          <div class="gallery-item">
+            <img src="asset/Birthday (4).png" alt="Birthday Invitation Preview 4">
+          </div>
+          <div class="gallery-item">
+            <img src="asset/Birthday (5).png" alt="Birthday Invitation Preview 5">
+          </div>
+          <div class="gallery-item">
+            <img src="asset/Birthday (6).png" alt="Birthday Invitation Preview 6">
+          </div>
+        </div>
+        <p class="slider-hint">&#x2194; Geser horizontal dan tekan untuk melihat detail dokumentasi foto</p>
+      </div>
+    </div>
+
+    <!-- PROYEK 5: Rumah Makan Minang -->
+    <div class="project-split-card">
+      <div class="project-info">
+        <div>
+          <span class="project-badge">Frontend Web Development</span>
+          <h3>Rumah Makan Minang</h3>
+          <p class="description">Sebuah aplikasi web pemesanan makanan & minuman interaktif yang dirancang untuk meningkatkan efisiensi operasional dan pengalaman 
+            pelanggan pada bisnis kuliner. Website ini memungkinkan pelanggan memilih menu, mengatur variasi hidangan (suhu/porsi), dan mengonfirmasi pesanan yang secara otomatis tersinkronisasi 
+            langsung ke spreadsheet backend secara real-time.</p>
+          <div class="tag-container">
+            <span class="tag">Frontend Dev</span>
+            <span class="tag">HTML</span>
+            <span class="tag">JavaScript</span>
+            <span class="tag">CSS</span>
+            <span class="tag">Google Apps Script</span>
+          </div>
+        </div>
+
+        <a href="https://drive.google.com/drive/folders/1--kUgf_1VDSHF5QCQICPRPD55dkquPtq?usp=sharing" target="_blank" class="btn">Lihat Berkas Proyek &rarr;</a>
+      </div>
+
+      <div class="project-gallery-container">
+        <div class="gallery-slider">
+          <div class="gallery-item">
+            <img src="asset/Makan (1).png" alt="Rumah Makan Minang Preview 1">
+          </div>
+          <div class="gallery-item">
+            <img src="asset/Makan (2).png" alt="Rumah Makan Minang Preview 2">
+          </div>
+          <div class="gallery-item">
+            <img src="asset/Makan (3).png" alt="Rumah Makan Minang Preview 3">
+          </div>
+          <div class="gallery-item">
+            <img src="asset/Makan (4).png" alt="Rumah Makan Minang Preview 4">
+          </div>
+          <div class="gallery-item">
+            <img src="asset/Makan (5).png" alt="Rumah Makan Minang Preview 5">
+          </div>
+          <div class="gallery-item">
+            <img src="asset/Makan (6).png" alt="Rumah Makan Minang Preview 6">
+          </div>
+        </div>
+        <p class="slider-hint">&#x2194; Geser horizontal dan tekan untuk melihat detail dokumentasi foto </p>
+      </div>
+    </div>
+    <!-- PROYEK 6: SmartInvoice RPA: Automated Workflow & Dynamic Reporting -->
+    <div class="project-split-card">
+      <div class="project-info">
+        <div>
+          <span class="project-badge">RPA Automation</span>
+          <h3>SmartInvoice RPA: Automated Workflow & Dynamic Reporting</h3>
+          <p class="description">Proyek ini adalah solusi automasi berbasis UiPath RPA yang mengotomatiskan seluruh alur pemrosesan transaksi 
+            dan pembuatan dokumen keuangan secara terstruktur. Menggunakan arsitektur Producer-Consumer, robot membaca data transaksi dari 
+            Microsoft Excel, memvalidasinya, lalu secara otomatis mengisikan detail pelanggan ke dalam templat Microsoft Word hingga 
+            menghasilkan dokumen faktur individu secara dinamis. Selain itu, sistem secara real-time mencatat riwayat pemrosesan ke berkas 
+            log audit dan mengompilasi rekapitulasi akhir ke dalam laporan spreadsheet harian. Solusi ini 
+            berhasil memangkas waktu pemrosesan tagihan secara signifikan, menghilangkan human error, serta menjamin akurasi data seratus persen.</p>
+          <div class="tag-container">
+            <span class="tag">RPA</span>
+            <span class="tag">UiPath</span>
+            <span class="tag">Microsoft Excel</span>
+            <span class="tag">Microsoft Word</span>
+          </div>
+        </div>
+
+        <a href="https://drive.google.com/drive/folders/10UyYCsoekM-TvQCPRT9QKAgX1x5nXibs?usp=sharing" target="_blank" class="btn">Lihat Berkas Proyek &rarr;</a>
+      </div>
+
+      <div class="project-gallery-container">
+        <div class="gallery-slider">
+          <div class="gallery-item">
+            <img src="asset/Auto (1).jpg" alt="RPA Preview 1">
+          </div>
+          <div class="gallery-item">
+            <img src="asset/Auto (2).jpg" alt="RPA Preview 2">
+          </div>
+          <div class="gallery-item">
+            <img src="asset/Auto (3).jpg" alt="RPA Preview 3">
+          </div>
+        </div>
+        <p class="slider-hint">&#x2194; Geser horizontal dan tekan untuk melihat detail dokumentasi foto </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Certificates Section -->
+  <section id="certificates">
+    <h2>Sertifikat</h2>
+    <div class="card-grid">
+
+      <!-- Certificate 1 -->
+      <div class="card">
+        <div class="card-img-container">
+          <img src="asset/Basic AI.jpeg" alt="Sertifikat Azure AI Basic">
+        </div>
+        <div class="card-body">
+          <div>
+            <h3 class="card-title">Azure AI Basic Fundamental</h3>
+            <div class="tag-container">
+              <span class="tag">elevAIte Indonesia</span>
+              <span class="tag">2025</span>
+            </div>
+            <p class="card-text">Fondasi awal pemahaman kecerdasan buatan di ekosistem Microsoft Azure.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Certificate 2 -->
+      <div class="card">
+        <div class="card-img-container">
+          <img src="asset/Microsoft Azure.jpeg" alt="Sertifikat Microsoft Azure AI">
+        </div>
+        <div class="card-body">
+          <div>
+            <h3 class="card-title">Microsoft Azure AI Fundamentals: AI-900T00-A</h3>
+            <div class="tag-container">
+              <span class="tag">elevAIte Indonesia – Komdigi × Microsoft × BINUS University × GreatNusa</span>
+              <span class="tag">2025</span>
+            </div>
+            <p class="card-text">Memahami konsep dasar AI, machine learning, dan layanan Azure AI.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Certificate 3 -->
+      <div class="card">
+        <div class="card-img-container">
+          <img src="asset/Mendix.jpeg" alt="Sertifikat Mendix Rapid Developer">
+        </div>
+        <div class="card-body">
+          <div>
+            <h3 class="card-title">Mendix Rapid Developer Certification</h3>
+            <div class="tag-container">
+              <span class="tag">Mendix</span>
+              <span class="tag">2026</span>
+            </div>
+            <p class="card-text">Sertifikasi resmi yang membuktikan kemampuan membangun aplikasi secara cepat menggunakan platform low-code Mendix.</p>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- Modal Pop-up untuk Detail Gambar -->
+  <div id="imageModal" class="image-modal">
+    <span class="image-modal-close" id="closeModal">&times;</span>
+    <img class="image-modal-content" id="modalImg" alt="Detail Gambar">
+  </div>
+
+  <!-- Contact / Footer -->
+  <footer id="contact">
+    <h2>Hubungi Saya</h2>
+    <p>Email: <a href="mailto:keagan.chandra@binus.ac.id">keagan.chandra@binus.ac.id</a> | Telepon: +62 878-8237-3600</p>
+    <p>LinkedIn: <a href="https://www.linkedin.com/in/keagan-osworth-chandra-b6134a326" target="_blank">Keagan Osworth Chandra</a></p>
+    <br>
+    <p>&copy; 2026 Keagan Osworth Chandra. All rights reserved.</p>
+  </footer>
+
+  <!-- Script JavaScript Lightbox Popup Gambar -->
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      const modal = document.getElementById('imageModal');
+      const modalImg = document.getElementById('modalImg');
+      const closeBtn = document.getElementById('closeModal');
+
+      // Memilih semua elemen gambar yang ada di halaman
+      const allImages = document.querySelectorAll('img');
+
+      allImages.forEach(img => {
+        img.addEventListener('click', function() {
+          modal.classList.add('active');
+          modalImg.src = this.src;
+          modalImg.alt = this.alt;
+          document.body.style.overflow = 'hidden'; // Mengunci scroll saat modal terbuka
+        });
+      });
+
+      // Fungsi untuk menutup modal
+      function closeModal() {
+        modal.classList.remove('active');
+        document.body.style.overflow = ''; // Mengembalikan scroll
+      }
+
+      closeBtn.addEventListener('click', closeModal);
+
+      // Menutup modal ketika area latar belakang gelap diklik
+      modal.addEventListener('click', function(e) {
+        if (e.target === modal) {
+          closeModal();
+        }
+      });
+
+      // Menutup modal dengan menekan tombol ESC di keyboard
+      document.addEventListener('keydown', function(e) {
+        if (e.key === 'Escape' && modal.classList.contains('active')) {
+          closeModal();
+        }
+      });
+    });
+  </script>
+
+</body>
+</html>
